@@ -1,0 +1,24 @@
+import { Outlet, useLocation } from 'react-router'
+import { useEffect } from 'react'
+import Navigation from './Navigation'
+import Footer from './Footer'
+import BackToTop from './BackToTop'
+
+export default function Layout() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return (
+    <div className="min-h-screen">
+      <Navigation />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+      <BackToTop />
+    </div>
+  )
+}
